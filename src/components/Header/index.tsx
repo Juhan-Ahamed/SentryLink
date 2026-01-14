@@ -62,7 +62,7 @@ export const Header = ({
       </div>
 
       {/* Main Header Content */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-5 xl:flex-row xl:justify-between xl:items-center">
         <div className="flex items-center gap-4">
           <h2 className="text-2xl font-black text-main tracking-tight">
             {title}

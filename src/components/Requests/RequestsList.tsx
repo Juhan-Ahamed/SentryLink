@@ -23,7 +23,7 @@ export const RequestsList = ({ requests, onFulfill }: RequestsListProps) => {
   };
 
   return (
-    <div className="bg-white border border-light rounded-xl overflow-hidden shadow-sm">
+    <div className="bg-white border border-light rounded-xl overflow-x-auto shadow-sm">
       <div className="p-4 border-b border-light bg-slate-50/50 flex justify-between items-center">
         <h3 className="text-[11px] font-black text-muted uppercase tracking-widest">
           To-Do List

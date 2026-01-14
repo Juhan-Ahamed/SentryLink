@@ -38,7 +38,7 @@ export const VaultTable = ({ data }: VaultTableProps) => {
 
   return (
     <div className="relative">
-      <div className="bg-white border border-light rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-light rounded-xl overflow-x-auto shadow-sm">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-slate-50/80 border-b border-light">
@@ -75,7 +75,6 @@ export const VaultTable = ({ data }: VaultTableProps) => {
             {data.map((item) => (
               <tr
                 key={item.id}
-                // onClick={() => toggleSelect(item.id)}
                 onClick={() => router.push(`/evidence/${item.id}`)}
                 className={`transition-colors group cursor-pointer ${
                   selectedIds.has(item.id)

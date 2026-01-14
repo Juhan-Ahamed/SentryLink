@@ -1,9 +1,12 @@
 "use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() || "/";
 
   const navLinkClass = (
@@ -18,7 +21,33 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className="w-64 shrink-0 flex flex-col bg-white border-r border-light">
+      {/* --- MOBILE TOGGLE BUTTON --- */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="lg:hidden fixed flex items-center justify-center w-10 h-10 top-4 right-4 z-50 p-2 bg-white border border-light rounded-lg shadow-sm"
+      >
+        <span className="material-symbols-outlined">
+          {isOpen ? "close" : "menu"}
+        </span>
+      </button>
+
+      {/* --- OVERLAY --- */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60] lg:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* --- SIDEBAR --- */}
+      <aside
+        className={`
+          fixed inset-y-0 left-0 z-[60] w-64 bg-white border-r border-light transition-transform duration-300 ease-in-out
+          lg:relative lg:translate-x-0 
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          flex flex-col shrink-0
+        `}
+      >
         <div className="p-6 flex flex-col h-full">
           <div className="flex items-center gap-3 mb-8">
             <div className="bg-primary/10 rounded-lg p-2">
@@ -36,26 +65,35 @@ const Sidebar = () => {
             </div>
           </div>
           <nav className="flex flex-col gap-1 flex-1">
-            <Link className={navLinkClass("/#")} href="/#">
+            <Link
+              onClick={() => setIsOpen(false)}
+              className={navLinkClass("/#")}
+              href="/#"
+            >
               <span className="material-symbols-outlined">dashboard</span>
               <p className="text-sm font-medium">Dashboard</p>
             </Link>
-            <Link className={navLinkClass("/")} href="/">
+            <Link
+              onClick={() => setIsOpen(false)}
+              className={navLinkClass("/")}
+              href="/"
+            >
               <span className="material-symbols-outlined filled-icon">
                 inventory_2
               </span>
-              <p className="text-sm font-bold">Evidence Vault</p>
+              <p className="text-sm font-medium">Evidence Vault</p>
             </Link>
-            <Link className={navLinkClass("/requests")} href="/requests">
+            <Link
+              onClick={() => setIsOpen(false)}
+              className={navLinkClass("/requests")}
+              href="/requests"
+            >
               <span className="material-symbols-outlined">description</span>
               <p className="text-sm font-medium">Requests</p>
             </Link>
             <Link
-              className={navLinkClass(
-                "/#",
-                undefined,
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted hover:bg-slate-50 transition-colors"
-              )}
+              onClick={() => setIsOpen(false)}
+              className={navLinkClass("/#")}
               href="/#"
             >
               <span className="material-symbols-outlined">settings</span>

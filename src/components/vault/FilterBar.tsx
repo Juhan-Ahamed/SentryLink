@@ -45,7 +45,7 @@ export function FilterBar() {
   };
 
   return (
-    <section className="sticky top-[115px] z-50 px-8 py-4 bg-white border-b border-slate-200 flex flex-wrap items-center gap-4">
+    <section className="sticky top-[105px] z-50 px-8 py-4 bg-white border-b border-slate-200 flex flex-wrap items-center gap-4">
       <div className="flex-1 min-w-75">
         <div className="relative group">
           <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors text-[20px]">
