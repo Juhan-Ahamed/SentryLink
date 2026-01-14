@@ -24,7 +24,7 @@ const Sidebar = () => {
       {/* --- MOBILE TOGGLE BUTTON --- */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed flex items-center justify-center w-10 h-10 top-4 right-4 z-50 p-2 bg-white border border-light rounded-lg shadow-sm"
+        className="lg:hidden fixed flex items-center justify-center w-10 h-10 top-4 right-4 z-[60] p-2 bg-white border border-light rounded-lg shadow-sm"
       >
         <span className="material-symbols-outlined">
           {isOpen ? "close" : "menu"}
